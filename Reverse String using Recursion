@@ -1,0 +1,18 @@
+    public static void reverse(String string){
+        /**
+         * First we will remove the first letter of the string until we have only an empty string left.
+         * after this is done.
+         * we return.
+         * we go back and take the first letter of the string in the previous case.
+         * we keep doing that.
+         */
+        if(string.length() == 0){//base case
+            return ;
+        }
+        String restOfString = string.substring(1);
+        reverse(restOfString);
+        System.out.println(string.substring(0,1));
+    }
+    public static void main(String[] args){
+        reverse("BINOD");
+    }
