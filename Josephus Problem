@@ -1,0 +1,43 @@
+    public static int jp(int n,int k){
+        //we are given n people playing a game of death.
+        // The first person starts and shoots the kth person from him.
+        //So if the first person is at index 0 and k = 3.
+        //He will kill the person at index 2.
+
+        // Then the next person alive from the first person gets the gun and
+        // does the same. The game repeats itself until the last person remains.
+
+        //base case: We see that as the game progresses the number of people
+        // in the circle become less and less.
+        if(n == 1){
+            return 0;
+        }
+        //we try to find the logic between f(n,k) and f(n-1,k)
+        // see it with f(5,3) perform one shoot and then f(4,3) do not perform a shoot.
+        //We see that in the above two cases we need to rotate the situation to
+        // interchange between the two cases.
+
+        //if we see the relation between the f(5,3) case after one shot fired and f(4,3) case we try to find the relation between their indices.
+        //So if I give you the answer of f(n-1,k) and you need to find the answer for f(n,k) then you need to do
+        //f(n,k) = (f(n-1,k) + k)%n
+        return (jp(n-1,k)+k)%n;
+
+    }
+    public static int jopOptimised(int n,int k){
+        /**
+         * In this case we use maths to find an answer
+         * https://www.youtube.com/watch?v=uCsD3ZGzMgE&t=18s
+         * In the above vedio we find out that if n can be represented as 2^a + l
+         * where l <2a then k will be equal 2l + 1
+         */
+        double i = 0;
+        while(!(n<Math.pow(2,i))){
+            i ++;
+        }
+        i = i-1;
+        int l = n - (int)Math.pow(2,i);
+        return 2*l+1;
+    }
+    public static void main(String[] args){
+        System.out.println(jp(5,3));
+    }
