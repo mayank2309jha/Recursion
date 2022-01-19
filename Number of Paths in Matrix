@@ -1,0 +1,14 @@
+//If we have a Matrix which contains m columns and n rows.
+//If m is 1 or n is 1 then we know the number of ways to travel through the maze is 1 only.
+//Otherwise we just move in the right and in the bottom direction.
+
+
+    public static int noOfWays(int m,int n){
+        if(m == 1 || n == 1){
+            return 1;
+        }
+        return noOfWays(m-1,n) + noOfWays(m,n-1);
+    }
+    public static void main(String[] args){
+        System.out.println(noOfWays(3,3));
+    }
