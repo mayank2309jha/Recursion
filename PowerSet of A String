@@ -1,0 +1,17 @@
+    public static void powerSet(String string,int i,String curr){
+        /**
+         * We simply traverse through the string and at every index we either 
+         * take the letter into our final string or not depending on that in 
+         * the end we will have all kinds of strings.
+         */
+        if(i == string.length()){
+            System.out.println(curr);
+            return ;
+        }
+        powerSet(string, i+1,curr+string.substring(i,i+1));
+        powerSet(string,i+1,curr);
+    }
+    public static void main(String[] args){
+        String string = "abc";
+        powerSet("abc",0,"");
+    }
